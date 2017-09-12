@@ -86,7 +86,7 @@ WHERE playerID='ruthba01'"
 sqldf(query)
 ```
 
-### Example:
+### 0Example:
 
 Find the career homerun totals for Babe Ruth.
 ```{r}
