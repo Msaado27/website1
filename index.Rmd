@@ -11,7 +11,7 @@ library(Lahman)
 library(sqldf)
 ```
 
-### example.
+### Example:
 Suppose we want to see the homerun totals for the 1927 Yankees. 
 We could write:
 ```{r}
@@ -60,7 +60,7 @@ sqldf(query)
 ## ORDER BY
 
 With SQL, we can also order the rows in the output.
-### example:
+### Example:
 suppose you wanted to find every instance of a player hitting more than fifty homeruns. Suppose you want to have the players with the highest homeruns at the top, you can do this the following way:
 
 ```{r}
@@ -86,7 +86,7 @@ WHERE playerID='ruthba01'"
 sqldf(query)
 ```
 
-###Example:
+### Example:
 
 Find the career homerun totals for Babe Ruth.
 ```{r}
@@ -96,7 +96,7 @@ GROUP BY playerID"
 sqldf(query)
 ```
 
-###Example:
+### Example:
 
 find the career homerun totals for all players, but list only those with a total of 600 or mor. order by having greatest total at the top.
 ```{r}
@@ -107,7 +107,7 @@ ORDER BY sum(HR) DESC"
 sqldf(query)
 ```
 
-###Example:
+### Example:
 
 What players have the highest average per season homerun total.
 ```{r}
