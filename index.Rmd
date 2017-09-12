@@ -11,7 +11,8 @@ library(Lahman)
 library(sqldf)
 ```
 
-### example. Suppose we want to see the homerun totals for the 1927 Yankees. 
+### example.
+Suppose we want to see the homerun totals for the 1927 Yankees. 
 We could write:
 ```{r}
 query<-"SELECT playerID,teamID,yearID,HR FROM Batting
@@ -86,6 +87,7 @@ sqldf(query)
 ```
 
 ###Example:
+
 Find the career homerun totals for Babe Ruth.
 ```{r}
 query<-"SELECT playerID,sum(HR) FROM Batting 
@@ -95,6 +97,7 @@ sqldf(query)
 ```
 
 ###Example:
+
 find the career homerun totals for all players, but list only those with a total of 600 or mor. order by having greatest total at the top.
 ```{r}
 query<-"SELECT playerID,sum(HR) FROM Batting 
@@ -105,6 +108,7 @@ sqldf(query)
 ```
 
 ###Example:
+
 What players have the highest average per season homerun total.
 ```{r}
 query<-"SELECT playerID,avg (HR) FROM Batting
