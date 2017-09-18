@@ -602,6 +602,24 @@ sqldf(query)</code></pre>
 ## 7       Jim     Thome     612
 ## 8     Sammy      Sosa     609</code></pre>
 </div>
+<div id="example-13" class="section level3">
+<h3>Example:</h3>
+<p>List all players with the first name Bob, who averaged more than one million dollars in salary over their career. Include last names. You will need to use the colnames(Salaries) table.</p>
+<pre class="r"><code>query&lt;-&quot;SELECT nameFirst,nameLast,salary FROM Salaries INNER JOIN Master On Salaries.playerID=Master.playerID GROUP BY Master.playerID HAVING nameFirst='Bob' and salary&gt;=1000000&quot;
+sqldf(query)</code></pre>
+<pre><code>##    nameFirst  nameLast  salary
+## 1        Bob     Boone 1900000
+## 2        Bob     Howry 2000000
+## 3        Bob    Kipper 1000000
+## 4        Bob   Milacki 1180000
+## 5        Bob     Ojeda 1700000
+## 6        Bob   Stanley 1060000
+## 7        Bob Tewksbury 1750000
+## 8        Bob      Walk 2175000
+## 9        Bob     Welch 3450000
+## 10       Bob     Wells 1700000
+## 11       Bob   Wickman 6500000</code></pre>
+</div>
 </div>
 </div>
 

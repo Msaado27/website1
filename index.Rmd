@@ -180,6 +180,14 @@ order by sum(HR) DESC"
 sqldf(query)
 ```
 
+### Example:
+List all players with the first name Bob, who averaged more than one million dollars in salary over their career. Include last names. You will need to use the colnames(Salaries) table.
+```{r}
+query<-"SELECT nameFirst,nameLast,salary FROM Salaries INNER JOIN Master On Salaries.playerID=Master.playerID GROUP BY Master.playerID HAVING nameFirst='Bob' and salary>=1000000"
+sqldf(query)
+```
+
+
 
 
 
