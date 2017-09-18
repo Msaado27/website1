@@ -86,7 +86,7 @@ WHERE playerID='ruthba01'"
 sqldf(query)
 ```
 
-### 0Example:
+### Example:
 
 Find the career homerun totals for Babe Ruth.
 ```{r}
@@ -117,5 +117,70 @@ HAVING avg(HR) >30
 ORDER BY avg(HR) DESC"
 sqldf(query)
 ```
+
+## Joins
+
+When one wants to join two tables together one must specify with the use of 'inner join' when specifying from. In addition one must specify which variables are shared between the two tables.
+
+### Example:
+Join Batting table with Master table to display nameFirst and nameLast instead of playerID as 'ruthba01'.
+```{r}
+query<-"select nameFirst, nameLast, teamID, yearID,HR 
+from Batting inner join Master
+on Batting.playerID=Master.playerID
+where Batting.playerID = 'ruthba01'"
+
+sqldf(query)
+```
+### Example:
+Join Batting and Master to display names of players with HR greater than 50 in descending order.
+```{r}
+query<-"select nameFirst, nameLast, teamID, yearID, HR 
+from Batting inner join Master
+on Batting.playerID=Master.playerID
+where HR>50
+order by HR desc"
+
+sqldf(query)
+```
+
+### Example:
+Join Batting and Teams tables as to display the full name of team instead of teamID for the player 'ruthba01'
+```{r}
+query<-"select playerID, name, Batting.yearID, Batting.HR
+from Batting inner join Teams
+on Batting.teamID=Teams.teamID
+and Batting.yearID=Teams.yearID
+where playerID='ruthba01'"
+
+sqldf(query)
+```
+
+### Example:
+Joining of three tables together(Batting, Teams, Master) and identifying 'ruthba01'. When joining three tables use '()' when first join is written.
+```{r}
+query<-"select nameFirst, nameLast, name, Batting.yearID, Batting.HR 
+from (Batting inner join Master 
+on Batting.playerID=Master.playerID) inner join Teams 
+on Batting.teamID=Teams.teamID and Batting.yearID=Teams.yearID
+where Batting.playerID='ruthba01'"
+
+sqldf(query)
+```
+### Example:
+Join Batting and Master to display players that have a career total of more than 600 HR.
+```{r}
+query<-"select nameFirst, nameLast, sum(HR)
+from Batting inner join Master 
+on Batting.playerID = Master.playerID
+group by Batting.playerID
+having sum(HR)>600
+order by sum(HR) DESC"
+
+sqldf(query)
+```
+
+
+
 
 
